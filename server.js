@@ -1,17 +1,15 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const hospitalRoutes = require('./routes/hospitalRoutes');
+
+
 const app = express();
 
-
-const {createBlog} = require("./controllers/blogcontroller")
-  
-
 app.use(express.json())
-app.get('/',(req,res)=>{
-    return res.send("Hello");})
+app.use(express.urlencoded({extended:false}))
 
-app.post('/',createBlog);
+app.use('/hospitals',hospitalRoutes);
 
 // connect to database
 mongoose.set("strictQuery", false);
