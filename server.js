@@ -2,6 +2,9 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const hospitalRoutes = require('./routes/hospitalRoutes');
+const doctorRoutes = require('./routes/doctorRoutes');
+const userRoutes = require('./routes/userRoutes');
+const bookingRoutes = require('./routes/bookingRoutes')
 
 
 const app = express();
@@ -10,6 +13,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.use('/hospitals',hospitalRoutes);
+app.use('/doctors',doctorRoutes);
+app.use('/users',userRoutes);
+app.use('/bookings',bookingRoutes)
 
 // connect to database
 mongoose.set("strictQuery", false);
