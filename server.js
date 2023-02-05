@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config();
+const cors = require('cors')
 const mongoose = require('mongoose');
 const hospitalRoutes = require('./routes/hospitalRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
@@ -9,9 +10,13 @@ const bookingRoutes = require('./routes/bookingRoutes')
 
 const app = express();
 
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
 
+app.use(cors({origin:"*"}))
+app.use(express.json())
+
+app.get('/',(req,res)=>{
+    res.send("TestAPI")
+})
 app.use('/hospitals',hospitalRoutes);
 app.use('/doctors',doctorRoutes);
 app.use('/users',userRoutes);
