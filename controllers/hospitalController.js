@@ -34,7 +34,7 @@ const getHospitalByLocation=async(req,res)=>{
               type: "Point",
               coordinates: [latitude, longitude]
             },
-            $maxDistance: 1000
+            $maxDistance: 5000
           }
         }
       })
